@@ -145,6 +145,7 @@ def restore():
         try:
             source = Path(mount)
             inventory = json.loads((source / "private-manifest.json").read_text())
+            planned = []
             for item in inventory["files"]:
                 rel = Path(item["path"])
                 if rel.is_absolute() or ".." in rel.parts:
@@ -153,9 +154,14 @@ def restore():
                 if digest(src) != item["sha256"]:
                     raise SystemExit(f"Archive checksum mismatch: {rel}")
                 dst = ROOT / rel
-                dst.parent.mkdir(parents=True, exist_ok=True)
                 if dst.exists() and digest(dst) != item["sha256"]:
-                    raise SystemExit(f"Refusing to overwrite: {dst}")
+                    seed = ROOT / "comfyui/moss-image/example_workflows" / rel.name
+                    seeded_workflow = rel.parts[:4] == ("local", "ComfyUI", "user", "default") and rel.parent.name == "workflows" and seed.is_file() and digest(dst) == digest(seed)
+                    if not seeded_workflow:
+                        raise SystemExit(f"Refusing to overwrite: {dst}")
+                planned.append((src, dst))
+            for src, dst in planned:
+                dst.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, dst)
             print(f"Restored {len(inventory['files'])} private files")
         finally:
