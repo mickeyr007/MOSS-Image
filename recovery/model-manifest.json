@@ -1,0 +1,661 @@
+{
+  "schema": 1,
+  "models": [
+    {
+      "path": "models/MOSS-Image-SFT/.gitattributes",
+      "size": 663,
+      "sha256": "1e45ae0e7440ad5050565b6e03920849907dd7f9fd1ac681775f5f9a49838cfa",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": ".gitattributes",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/.gitattributes"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/.gitignore",
+      "size": 27,
+      "sha256": "ef4eccfd90d6561a50fa85ed203b851f06b2981540d54795000495839df96c27",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": ".gitignore",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/.gitignore"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/LICENSE",
+      "size": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "LICENSE",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/LICENSE"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/README.md",
+      "size": 9249,
+      "sha256": "58232c1ee4ec63dc095cf2dbd97295dae8150ad9e5529defd50d7a1764a21d4d",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "README.md",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/README.md"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/comparison/base.webp",
+      "size": 101944,
+      "sha256": "dd0eccae7f9c591b65c8161bb2d8515a3fdfe124d4be015f660ffa96c5c7a8b8",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/comparison/base.webp",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/comparison/base.webp"
+      },
+      "source_sha256": "dd0eccae7f9c591b65c8161bb2d8515a3fdfe124d4be015f660ffa96c5c7a8b8"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/comparison/sft.webp",
+      "size": 152796,
+      "sha256": "de1ba44f48d49e792b16aac26f2d260beefbcb9fbfa72f3ace363ff8a9917f71",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/comparison/sft.webp",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/comparison/sft.webp"
+      },
+      "source_sha256": "de1ba44f48d49e792b16aac26f2d260beefbcb9fbfa72f3ace363ff8a9917f71"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/feishu-builders-badge.svg",
+      "size": 8007,
+      "sha256": "b33cf4aca202bdf42c564163f304891fa17e96413ae0748ffd2afce9f909a677",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/feishu-builders-badge.svg",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/feishu-builders-badge.svg"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/lockup-dark.svg",
+      "size": 9826,
+      "sha256": "7484badabd9e56e29b4ca791d9e398b6b4d12cbbf5bc21a5b7913eca5a3557e4",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/lockup-dark.svg",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/lockup-dark.svg"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/lockup-light.svg",
+      "size": 9826,
+      "sha256": "662aaecb531db075d93232d56f892fb2e80c95c540d3d604a4ec73a765c8e51e",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/lockup-light.svg",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/lockup-light.svg"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/modelscope-base-badge.svg",
+      "size": 1243,
+      "sha256": "ae320543e3045204037a0952e3bc18c90abb26f8677750bb60d5136bedda710a",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/modelscope-base-badge.svg",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/modelscope-base-badge.svg"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/modelscope-sft-badge.svg",
+      "size": 1239,
+      "sha256": "04795cebf6062ec8ea62641af4bea2e16acc8eb71f2fb67ed6262c3dec49b31c",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/modelscope-sft-badge.svg",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/modelscope-sft-badge.svg"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/showcase/layout-bboxes.webp",
+      "size": 851254,
+      "sha256": "0cd091fbd9145b9dc640e1d70dc10e6776b661bb1f443bdefadc9a24f78214d1",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/showcase/layout-bboxes.webp",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/showcase/layout-bboxes.webp"
+      },
+      "source_sha256": "0cd091fbd9145b9dc640e1d70dc10e6776b661bb1f443bdefadc9a24f78214d1"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/showcase/overview.webp",
+      "size": 1128906,
+      "sha256": "ae5039bc1ea15b1be43662aabb90539332815230bbc7f56d9481ce53f79131f1",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/showcase/overview.webp",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/showcase/overview.webp"
+      },
+      "source_sha256": "ae5039bc1ea15b1be43662aabb90539332815230bbc7f56d9481ce53f79131f1"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/showcase/overview2.webp",
+      "size": 4626816,
+      "sha256": "a51172680bcddd6fad2edf0bc6bd0c26e509aa52ac9e3b57f95e914bd6d223f0",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/showcase/overview2.webp",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/showcase/overview2.webp"
+      },
+      "source_sha256": "a51172680bcddd6fad2edf0bc6bd0c26e509aa52ac9e3b57f95e914bd6d223f0"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/showcase/text-rendering.webp",
+      "size": 1861652,
+      "sha256": "e3dac88a40868bf4a51b27d74b09cbddd30260f1ce118c6d6ba60ad5b97ea83e",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/showcase/text-rendering.webp",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/showcase/text-rendering.webp"
+      },
+      "source_sha256": "e3dac88a40868bf4a51b27d74b09cbddd30260f1ce118c6d6ba60ad5b97ea83e"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/assets/teaser.webp",
+      "size": 438380,
+      "sha256": "47d1ae8ebf4f7dc0db2c85dc7f71f182cd2205b19932211e831e1cb24b17efc1",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "assets/teaser.webp",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/assets/teaser.webp"
+      },
+      "source_sha256": "47d1ae8ebf4f7dc0db2c85dc7f71f182cd2205b19932211e831e1cb24b17efc1"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/model_index.json",
+      "size": 412,
+      "sha256": "ca80b1f562a506e0eb24afb1acb464fb583163e3c240c04e4bc69fea090db173",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "model_index.json",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/model_index.json"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/pipeline_moss_image.py",
+      "size": 25060,
+      "sha256": "1dac1aca9feb1bfdfc727a401e4b67d61a505d3190706d1b7d2d784f88678b31",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "pipeline_moss_image.py",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/pipeline_moss_image.py"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/scheduler/pipeline_moss_image.py",
+      "size": 25060,
+      "sha256": "1dac1aca9feb1bfdfc727a401e4b67d61a505d3190706d1b7d2d784f88678b31",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "scheduler/pipeline_moss_image.py",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/scheduler/pipeline_moss_image.py"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/scheduler/scheduler_config.json",
+      "size": 494,
+      "sha256": "707322832cc507dfb8c51c0e0cd04d44ee2d30a9b036b6f3c47d6c17aa71adf0",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "scheduler/scheduler_config.json",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/scheduler/scheduler_config.json"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/text_encoder/config.json",
+      "size": 2813,
+      "sha256": "b31ee18a242bcfcccbe740f825f6b1d3ae231b0655eeecb5de3e98d504b7d68c",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "text_encoder/config.json",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/text_encoder/config.json"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/text_encoder/model-00001-of-00004.safetensors",
+      "size": 4973910744,
+      "sha256": "abfaa3d3a8612508c85ee8f6da9c734b862f10298b903765c4ad384177c32b0b",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "text_encoder/model-00001-of-00004.safetensors",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/text_encoder/model-00001-of-00004.safetensors"
+      },
+      "source_sha256": "abfaa3d3a8612508c85ee8f6da9c734b862f10298b903765c4ad384177c32b0b"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/text_encoder/model-00002-of-00004.safetensors",
+      "size": 4988364288,
+      "sha256": "9112637fa6bf4d07bafd6ae268852b18d3d0c1242f4ee901c5579006e5bd4894",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "text_encoder/model-00002-of-00004.safetensors",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/text_encoder/model-00002-of-00004.safetensors"
+      },
+      "source_sha256": "9112637fa6bf4d07bafd6ae268852b18d3d0c1242f4ee901c5579006e5bd4894"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/text_encoder/model-00003-of-00004.safetensors",
+      "size": 4954202112,
+      "sha256": "956f1ef51d0cfe610b0d22987c0b7821c36e3ce228abceccef523518bcf079dc",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "text_encoder/model-00003-of-00004.safetensors",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/text_encoder/model-00003-of-00004.safetensors"
+      },
+      "source_sha256": "956f1ef51d0cfe610b0d22987c0b7821c36e3ce228abceccef523518bcf079dc"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/text_encoder/model-00004-of-00004.safetensors",
+      "size": 1869001848,
+      "sha256": "9e21d20e8adde88c3e0b65d4a0d251f143d98ee9d52db36b4348361091e4e208",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "text_encoder/model-00004-of-00004.safetensors",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/text_encoder/model-00004-of-00004.safetensors"
+      },
+      "source_sha256": "9e21d20e8adde88c3e0b65d4a0d251f143d98ee9d52db36b4348361091e4e208"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/text_encoder/model.safetensors.index.json",
+      "size": 64641,
+      "sha256": "0af6fa3fa36ba8dcbb6b7ad0325a36c5b1b69862a9a1f1486b1b80385bd8f5ee",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "text_encoder/model.safetensors.index.json",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/text_encoder/model.safetensors.index.json"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/tokenizer/chat_template.jinja",
+      "size": 7756,
+      "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "tokenizer/chat_template.jinja",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/tokenizer/chat_template.jinja"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/tokenizer/tokenizer.json",
+      "size": 19989325,
+      "sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "tokenizer/tokenizer.json",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/tokenizer/tokenizer.json"
+      },
+      "source_sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/tokenizer/tokenizer_config.json",
+      "size": 1123,
+      "sha256": "bee8eba30f0eb4af73c0fe2cd06d0f89b657d7819941c438157ec42f7c80ea87",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "tokenizer/tokenizer_config.json",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/tokenizer/tokenizer_config.json"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/transformer/config.json",
+      "size": 240,
+      "sha256": "3291c3a1c7adc22b8182a0de25ca8ec97474d72715ce84adbab09cc0be24f666",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "transformer/config.json",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/transformer/config.json"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/transformer/diffusion_pytorch_model-00001-of-00003.safetensors",
+      "size": 4991978016,
+      "sha256": "e40d3444940a0b0fd7cd45ba7959a5bd3d5efd7ddf87aae5ce4d87ce8aa03d01",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "transformer/diffusion_pytorch_model-00001-of-00003.safetensors",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/transformer/diffusion_pytorch_model-00001-of-00003.safetensors"
+      },
+      "source_sha256": "e40d3444940a0b0fd7cd45ba7959a5bd3d5efd7ddf87aae5ce4d87ce8aa03d01"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/transformer/diffusion_pytorch_model-00002-of-00003.safetensors",
+      "size": 4983137016,
+      "sha256": "d106da790ec2924ffd8af04b4ffa8f8de281a974b58e55649c3ec596dc8ef033",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "transformer/diffusion_pytorch_model-00002-of-00003.safetensors",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/transformer/diffusion_pytorch_model-00002-of-00003.safetensors"
+      },
+      "source_sha256": "d106da790ec2924ffd8af04b4ffa8f8de281a974b58e55649c3ec596dc8ef033"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/transformer/diffusion_pytorch_model-00003-of-00003.safetensors",
+      "size": 189549184,
+      "sha256": "11f637ab17c7093344a6110a1e87ffda8e56558dc55183d8e790222cfcdcf52d",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "transformer/diffusion_pytorch_model-00003-of-00003.safetensors",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/transformer/diffusion_pytorch_model-00003-of-00003.safetensors"
+      },
+      "source_sha256": "11f637ab17c7093344a6110a1e87ffda8e56558dc55183d8e790222cfcdcf52d"
+    },
+    {
+      "path": "models/MOSS-Image-SFT/transformer/diffusion_pytorch_model.safetensors.index.json",
+      "size": 40298,
+      "sha256": "b609327fc75dbe5080e7e095d8b727d74d728b4f98e8b047133b0082cfa2fb03",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "transformer/diffusion_pytorch_model.safetensors.index.json",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/transformer/diffusion_pytorch_model.safetensors.index.json"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/transformer/pipeline_moss_image.py",
+      "size": 25060,
+      "sha256": "1dac1aca9feb1bfdfc727a401e4b67d61a505d3190706d1b7d2d784f88678b31",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "transformer/pipeline_moss_image.py",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/transformer/pipeline_moss_image.py"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/vae/config.json",
+      "size": 838,
+      "sha256": "cc77f3f0ce0357039c71018dc19edaa4fcceb0c2f7488fdc2b9c0580d6baafa1",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "vae/config.json",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/vae/config.json"
+      }
+    },
+    {
+      "path": "models/MOSS-Image-SFT/vae/diffusion_pytorch_model.safetensors",
+      "size": 249521372,
+      "sha256": "c3bdf94dc67ec69b30ea9fe1fa8340085679cae64d019f7c7e4a9921f1a7f17a",
+      "source": {
+        "kind": "model",
+        "repo": "OpenMOSS-Team/MOSS-Image-SFT",
+        "revision": "f972bd4b4b9e3852133cc5da954d87bc32cd8fb9",
+        "file": "vae/diffusion_pytorch_model.safetensors",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT/resolve/f972bd4b4b9e3852133cc5da954d87bc32cd8fb9/vae/diffusion_pytorch_model.safetensors"
+      },
+      "source_sha256": "c3bdf94dc67ec69b30ea9fe1fa8340085679cae64d019f7c7e4a9921f1a7f17a"
+    },
+    {
+      "path": "local/ComfyUI/models/diffusion_models/moss_image_sft_int8_convrot.safetensors",
+      "size": 5413698958,
+      "sha256": "b4d1475bc7eeffd7b809e82ea13a1fba1fb85c4e18365af3813722faa5c0fe4f",
+      "source": {
+        "kind": "model",
+        "repo": "Comfy-Org/MOSS-Image",
+        "revision": "530a4c94f92c35ef6818b1b035a983fe9dcf5f54",
+        "file": "diffusion_models/moss_image_sft_int8_convrot.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/530a4c94f92c35ef6818b1b035a983fe9dcf5f54/diffusion_models/moss_image_sft_int8_convrot.safetensors"
+      },
+      "source_sha256": "b4d1475bc7eeffd7b809e82ea13a1fba1fb85c4e18365af3813722faa5c0fe4f"
+    },
+    {
+      "path": "local/ComfyUI/models/facedetection/detection_Resnet50_Final.pth",
+      "size": 109497761,
+      "sha256": "6d1de9c2944f2ccddca5f5e010ea5ae64a39845a86311af6fdf30841b0a5a16d",
+      "external_backup_required": true
+    },
+    {
+      "path": "local/ComfyUI/models/facedetection/parsing_parsenet.pth",
+      "size": 85331193,
+      "sha256": "3d558d8d0e42c20224f13cf5a29c79eba2d59913419f945545d8cf7b72920de2",
+      "external_backup_required": true
+    },
+    {
+      "path": "local/ComfyUI/models/facerestore_models/GFPGANv1.3.pth",
+      "size": 348632874,
+      "sha256": "c953a88f2727c85c3d9ae72e2bd4846bbaf59fe6972ad94130e23e7017524a70",
+      "source": {
+        "kind": "dataset",
+        "repo": "Gourieff/ReActor",
+        "revision": "079e0e459cd4261bbcba8c71d47df54a4ded7642",
+        "file": "models/facerestore_models/GFPGANv1.3.pth",
+        "url": "https://huggingface.co/datasets/Gourieff/ReActor/resolve/079e0e459cd4261bbcba8c71d47df54a4ded7642/models/facerestore_models/GFPGANv1.3.pth"
+      },
+      "source_sha256": "c953a88f2727c85c3d9ae72e2bd4846bbaf59fe6972ad94130e23e7017524a70"
+    },
+    {
+      "path": "local/ComfyUI/models/facerestore_models/GFPGANv1.4.pth",
+      "size": 348632874,
+      "sha256": "e2cd4703ab14f4d01fd1383a8a8b266f9a5833dacee8e6a79d3bf21a1b6be5ad",
+      "source": {
+        "kind": "dataset",
+        "repo": "Gourieff/ReActor",
+        "revision": "079e0e459cd4261bbcba8c71d47df54a4ded7642",
+        "file": "models/facerestore_models/GFPGANv1.4.pth",
+        "url": "https://huggingface.co/datasets/Gourieff/ReActor/resolve/079e0e459cd4261bbcba8c71d47df54a4ded7642/models/facerestore_models/GFPGANv1.4.pth"
+      },
+      "source_sha256": "e2cd4703ab14f4d01fd1383a8a8b266f9a5833dacee8e6a79d3bf21a1b6be5ad"
+    },
+    {
+      "path": "local/ComfyUI/models/facerestore_models/GPEN-BFR-512.onnx",
+      "size": 284244491,
+      "sha256": "bf80acb8e91ba8852e3f012505be2c3b6cd6b3eed5ec605e3db87863c4e74d4e",
+      "source": {
+        "kind": "dataset",
+        "repo": "Gourieff/ReActor",
+        "revision": "079e0e459cd4261bbcba8c71d47df54a4ded7642",
+        "file": "models/facerestore_models/GPEN-BFR-512.onnx",
+        "url": "https://huggingface.co/datasets/Gourieff/ReActor/resolve/079e0e459cd4261bbcba8c71d47df54a4ded7642/models/facerestore_models/GPEN-BFR-512.onnx"
+      },
+      "source_sha256": "bf80acb8e91ba8852e3f012505be2c3b6cd6b3eed5ec605e3db87863c4e74d4e"
+    },
+    {
+      "path": "local/ComfyUI/models/facerestore_models/codeformer-v0.1.0.pth",
+      "size": 376637898,
+      "sha256": "1009e537e0c2a07d4cabce6355f53cb66767cd4b4297ec7a4a64ca4b8a5684b7",
+      "source": {
+        "kind": "dataset",
+        "repo": "Gourieff/ReActor",
+        "revision": "079e0e459cd4261bbcba8c71d47df54a4ded7642",
+        "file": "models/facerestore_models/codeformer-v0.1.0.pth",
+        "url": "https://huggingface.co/datasets/Gourieff/ReActor/resolve/079e0e459cd4261bbcba8c71d47df54a4ded7642/models/facerestore_models/codeformer-v0.1.0.pth"
+      },
+      "source_sha256": "1009e537e0c2a07d4cabce6355f53cb66767cd4b4297ec7a4a64ca4b8a5684b7"
+    },
+    {
+      "path": "local/ComfyUI/models/insightface/inswapper_128.onnx",
+      "size": 554253681,
+      "sha256": "e4a3f08c753cb72d04e10aa0f7dbe3deebbf39567d4ead6dce08e98aa49e16af",
+      "source": {
+        "kind": "dataset",
+        "repo": "Gourieff/ReActor",
+        "revision": "079e0e459cd4261bbcba8c71d47df54a4ded7642",
+        "file": "models/inswapper_128.onnx",
+        "url": "https://huggingface.co/datasets/Gourieff/ReActor/resolve/079e0e459cd4261bbcba8c71d47df54a4ded7642/models/inswapper_128.onnx"
+      },
+      "source_sha256": "e4a3f08c753cb72d04e10aa0f7dbe3deebbf39567d4ead6dce08e98aa49e16af"
+    },
+    {
+      "path": "local/ComfyUI/models/insightface/models/buffalo_l/1k3d68.onnx",
+      "size": 143607619,
+      "sha256": "df5c06b8a0c12e422b2ed8947b8869faa4105387f199c477af038aa01f9a45cc",
+      "external_backup_required": true
+    },
+    {
+      "path": "local/ComfyUI/models/insightface/models/buffalo_l/2d106det.onnx",
+      "size": 5030888,
+      "sha256": "f001b856447c413801ef5c42091ed0cd516fcd21f2d6b79635b1e733a7109dbf",
+      "external_backup_required": true
+    },
+    {
+      "path": "local/ComfyUI/models/insightface/models/buffalo_l/det_10g.onnx",
+      "size": 16923827,
+      "sha256": "5838f7fe053675b1c7a08b633df49e7af5495cee0493c7dcf6697200b85b5b91",
+      "external_backup_required": true
+    },
+    {
+      "path": "local/ComfyUI/models/insightface/models/buffalo_l/genderage.onnx",
+      "size": 1322532,
+      "sha256": "4fde69b1c810857b88c64a335084f1c3fe8f01246c9a191b48c7bb756d6652fb",
+      "external_backup_required": true
+    },
+    {
+      "path": "local/ComfyUI/models/insightface/models/buffalo_l/w600k_r50.onnx",
+      "size": 174383860,
+      "sha256": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43",
+      "external_backup_required": true
+    },
+    {
+      "path": "local/ComfyUI/models/model_patches/adapter_model.safetensors",
+      "size": 297382216,
+      "sha256": "17a48b8c605dcffdedb92a2b887d18cf316505be90802717669fb6556098dcdf",
+      "source": {
+        "kind": "model",
+        "repo": "chinoll/Moss-Image-Edit",
+        "revision": "3be9c40037e1b89b17aa85ff6f8ee805872aa558",
+        "file": "adapter_model.safetensors",
+        "url": "https://huggingface.co/chinoll/Moss-Image-Edit/resolve/3be9c40037e1b89b17aa85ff6f8ee805872aa558/adapter_model.safetensors"
+      },
+      "source_sha256": "17a48b8c605dcffdedb92a2b887d18cf316505be90802717669fb6556098dcdf"
+    },
+    {
+      "path": "local/ComfyUI/models/nsfw_detector/vit-base-nsfw-detector/config.json",
+      "size": 715,
+      "sha256": "604d1da5e3cc8b6dc3f2768a911ed61a44a331cfcee9ecde2ce2cba9a1e7972b",
+      "source": {
+        "kind": "model",
+        "repo": "AdamCodd/vit-base-nsfw-detector",
+        "revision": "8587de998f441aac03fdd57a85d2e4cb808c7d64",
+        "file": "config.json",
+        "url": "https://huggingface.co/AdamCodd/vit-base-nsfw-detector/resolve/8587de998f441aac03fdd57a85d2e4cb808c7d64/config.json"
+      }
+    },
+    {
+      "path": "local/ComfyUI/models/nsfw_detector/vit-base-nsfw-detector/model.safetensors",
+      "size": 344391328,
+      "sha256": "266efb8bf67c1e865a577222fbbd6ddb149b9e00ba0d2b50466a034837f026a4",
+      "source": {
+        "kind": "model",
+        "repo": "AdamCodd/vit-base-nsfw-detector",
+        "revision": "8587de998f441aac03fdd57a85d2e4cb808c7d64",
+        "file": "model.safetensors",
+        "url": "https://huggingface.co/AdamCodd/vit-base-nsfw-detector/resolve/8587de998f441aac03fdd57a85d2e4cb808c7d64/model.safetensors"
+      },
+      "source_sha256": "266efb8bf67c1e865a577222fbbd6ddb149b9e00ba0d2b50466a034837f026a4"
+    },
+    {
+      "path": "local/ComfyUI/models/nsfw_detector/vit-base-nsfw-detector/preprocessor_config.json",
+      "size": 232,
+      "sha256": "f2ca775909d2237bd31440280cefcaceb3ac66753c19f7a344e385e68982a9b2",
+      "source": {
+        "kind": "model",
+        "repo": "AdamCodd/vit-base-nsfw-detector",
+        "revision": "8587de998f441aac03fdd57a85d2e4cb808c7d64",
+        "file": "preprocessor_config.json",
+        "url": "https://huggingface.co/AdamCodd/vit-base-nsfw-detector/resolve/8587de998f441aac03fdd57a85d2e4cb808c7d64/preprocessor_config.json"
+      }
+    },
+    {
+      "path": "local/ComfyUI/models/text_encoders/qwen3.5_9b_int8_convrot.safetensors",
+      "size": 9748121532,
+      "sha256": "32e3787472f708fa5f83624acbf5ef23f7fc89c439e05065ea57cfe5a97f025a",
+      "source": {
+        "kind": "model",
+        "repo": "Comfy-Org/MOSS-Image",
+        "revision": "530a4c94f92c35ef6818b1b035a983fe9dcf5f54",
+        "file": "text_encoders/qwen3.5_9b_int8_convrot.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/530a4c94f92c35ef6818b1b035a983fe9dcf5f54/text_encoders/qwen3.5_9b_int8_convrot.safetensors"
+      },
+      "source_sha256": "32e3787472f708fa5f83624acbf5ef23f7fc89c439e05065ea57cfe5a97f025a"
+    },
+    {
+      "path": "local/ComfyUI/models/vae/flux2-vae_small.safetensors",
+      "size": 249521340,
+      "sha256": "d8d52ba036475f5fb07c8b435e176d3d97ebfa82f0d1a1c317f9cc1e25bd013b",
+      "source": {
+        "kind": "model",
+        "repo": "Comfy-Org/MOSS-Image",
+        "revision": "530a4c94f92c35ef6818b1b035a983fe9dcf5f54",
+        "file": "vae/flux2-vae_small.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/530a4c94f92c35ef6818b1b035a983fe9dcf5f54/vae/flux2-vae_small.safetensors"
+      },
+      "source_sha256": "d8d52ba036475f5fb07c8b435e176d3d97ebfa82f0d1a1c317f9cc1e25bd013b"
+    }
+  ]
+}
