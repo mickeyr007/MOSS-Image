@@ -13,15 +13,28 @@ free disk for one full model bundle (~25 GB), the environment and download files
 From the cloned repository root:
 
 ```bash
-MOSS_PYTHON=python3.12 bash scripts/setup-mac.sh
-.venv/bin/hf download OpenMOSS-Team/MOSS-Image-SFT --local-dir models/MOSS-Image-SFT
-bash scripts/gradio-mac.sh
+make setup
+make download
+make start
 ```
 
 Open http://127.0.0.1:7860. Start with 512×512, 10 steps and one image. Keep the terminal
 running; loading and inference can take minutes. Original PNGs and parameters.json are saved
-under `outputs/gradio/`. Stop with Ctrl+C. Subsequent runs only need the launch command.
+under `outputs/gradio/`. Stop with Ctrl+C. Subsequent runs only need `make start`.
 The Mac launcher uses local files only and disables Gradio analytics.
+Run `make help` to see the available commands. Override the setup Python with
+`make setup MOSS_PYTHON=/path/to/python3.12` if needed.
+
+To show only MOSS-Image commands when pressing Tab after `make ` in zsh, add
+these lines to `~/.zshrc` (replace the path with your clone's location):
+
+```zsh
+autoload -Uz compinit
+compinit
+source '/absolute/path/to/MOSS-Image/scripts/completion.zsh'
+```
+
+Start a new shell after updating `~/.zshrc`.
 
 `constraints-mac.txt` lists the versions used for the recorded local runs: torch 2.14.1,
 diffusers 0.41.0, transformers 5.20.1, accelerate 1.15.0 and Gradio 6.30.0. These constraints
@@ -30,7 +43,7 @@ apply to the optional Mac setup script, not to the existing installation path.
 The launcher defaults the DiT to FP16. To compare BF16:
 
 ```bash
-MOSS_MPS_DIT_DTYPE=bfloat16 bash scripts/gradio-mac.sh
+MOSS_MPS_DIT_DTYPE=bfloat16 make start
 ```
 
 The text encoder remains BF16 and the VAE FP32. Direct `mps_runtime.load_pipeline` defaults
@@ -72,8 +85,8 @@ hardware-regression-tested by this Mac contribution.
 CPU regression checks, without downloading weights:
 
 ```bash
-python -m pip install -e '.[ui]' -c constraints-mac.txt
-python -m unittest discover -s tests -p test_mps_runtime.py -v
+make setup
+make test
 ```
 
 The checks cover staging order, prompt cache eviction, CPU sinusoid arithmetic, source-change

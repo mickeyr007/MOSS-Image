@@ -12,6 +12,27 @@ sampling, SLG and memory management.
 
 Use the [ComfyUI-format models and workflows](https://huggingface.co/Comfy-Org/MOSS-Image): place the diffusion model in `models/diffusion_models/`, the text encoder in `models/text_encoders/`, and the VAE in `models/vae/`. Use **Load Diffusion Model**, **CLIP Loader** with type **moss_image**, and **Load VAE**. The built-in model defaults to shift 5 and includes a **MOSS-Image Layout Prompt** node.
 
+For the quantized SFT files installed by `make comfy-edit-download`, open
+[moss-image-native-sft.json](moss-image/example_workflows/moss-image-native-sft.json)
+in ComfyUI. It uses a Flux 2 latent, the MOSS text encoder, the matching FLUX.2
+VAE, and `KSampler → VAE Decode → Save Image`. Start at 512×512 and 8 steps on
+memory-limited Macs; increase steps and resolution after confirming it saves an
+image. The installer copies this workflow into ComfyUI's user workflows only
+when no file with that name already exists.
+
+Do not substitute MOSS model filenames into a Z-Image-Turbo template. Its latent
+and model settings differ; a pixel-space decoder can pass 128 latent channels
+to Save Image and trigger `Cannot handle this data type: (1, 1, 128), |u1`.
+
+For a face swap after generating an image, the optional
+[ReActor workflow](moss-image/example_workflows/reactor-face-swap.json) takes a
+source image and a face reference, then saves the swapped image. Install
+[ComfyUI-ReActor](https://github.com/Gourieff/ComfyUI-ReActor) and its models
+separately, then select your own images in both **Load Image** nodes. This
+workflow does not use MOSS weights or a text prompt. ReActor's InsightFace
+models are licensed for non-commercial research use; review their terms before
+using them in another setting. No personal images or model files are included.
+
 Existing plugin workflows use different loader nodes. Import a native workflow when switching; swapping only the model loader in the old workflow is insufficient. In particular, the native model uses a different timestep multiplier, so do not carry over the plugin workflow's **ModelSamplingSD3** node unchanged. To adjust native model shift, use **ModelSamplingAuraFlow** (multiplier 1).
 
 ## HF directory plugin (optional)
@@ -48,13 +69,19 @@ See the [user guide](../USERGUIDE.md) for prompt and sampling recommendations.
 ## Local launch
 
 ```bash
-bash comfyui/local/setup.sh
-bash comfyui/local/run.sh
+make comfy-setup
+make comfy-edit-setup
+make comfy-edit-download
+make comfy-edit-check
+make comfy-start
 ```
+
+For reference-image editing, the edit commands install the plugin and download
+only the four required model files. Run `make help` for the full command list.
 
 The setup script clones ComfyUI into the Git-ignored `local/ComfyUI/` directory
 if it is missing, creates a separate environment, and installs its dependencies.
-It installs the nodes and the MOSS-Image workflow without
+It installs the nodes and the MOSS-Image workflows without
 overwriting an existing file of the same name. Set `MOSS_PYTHON` to choose the
 interpreter and `UV_INDEX_URL` to choose the package index.
 

@@ -14,4 +14,4 @@ export HF_HUB_DISABLE_TELEMETRY=1
 exec .venv/bin/python "${COMFY_ENTRYPOINT:-main.py}" \
   --listen "${COMFY_HOST:-127.0.0.1}" --port "${COMFY_PORT:-8189}" \
   --disable-auto-launch --disable-metadata --fp32-vae \
-  --preview-method latent2rgb --disable-api-nodes "${COMFY_ARGS[@]}" "$@"
+  --preview-method latent2rgb --disable-api-nodes "${COMFY_ARGS[@]+"${COMFY_ARGS[@]}"}" "$@"

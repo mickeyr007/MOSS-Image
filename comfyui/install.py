@@ -24,10 +24,11 @@ def install(root):
     link(root, "moss-image")
     workflows = root / "user/default/workflows"
     workflows.mkdir(parents=True, exist_ok=True)
-    source = ROOT / "moss-image/example_workflows/moss-image.json"
-    target = workflows / source.name
-    if not target.exists():
-        shutil.copy2(source, target)
+    for name in ("moss-image.json", "moss-image-native-sft.json"):
+        source = ROOT / "moss-image/example_workflows" / name
+        target = workflows / name
+        if not target.exists():
+            shutil.copy2(source, target)
     logging.info("Installed MOSS-Image custom nodes into %s", root)
 
 

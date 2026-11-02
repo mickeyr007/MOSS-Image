@@ -21,7 +21,7 @@ if [[ -f local/env.sh ]]; then
   source local/env.sh
 fi
 moss_python="${MOSS_PYTHON:-python3.12}"
-uv venv --python "$moss_python" --allow-existing "${COMFY_VENV_ARGS[@]}" .venv
+uv venv --python "$moss_python" --allow-existing "${COMFY_VENV_ARGS[@]+"${COMFY_VENV_ARGS[@]}"}" .venv
 if [[ -n "${COMFY_SETUP:-}" ]]; then
   bash "$COMFY_SETUP"
 fi
