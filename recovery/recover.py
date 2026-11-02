@@ -41,11 +41,15 @@ def check_platform():
 def checkout(path, url, commit):
     if not (path / ".git").exists():
         path.parent.mkdir(parents=True, exist_ok=True)
-        run("git", "clone", url, str(path))
+        bundle = ROOT / "private/git-bundles" / (path.name + ".bundle")
+        run("git", "clone", str(bundle) if bundle.is_file() else url, str(path))
+        if bundle.is_file():
+            run("git", "remote", "set-url", "origin", url, cwd=path)
     if output("git", "rev-parse", "HEAD", cwd=path) != commit:
         if output("git", "status", "--porcelain", cwd=path):
             raise SystemExit(f"Refusing to change modified checkout: {path}")
-        run("git", "fetch", "origin", commit, cwd=path)
+        bundle = ROOT / "private/git-bundles" / (path.name + ".bundle")
+        run("git", "fetch", str(bundle) if bundle.is_file() else "origin", commit, cwd=path)
         run("git", "checkout", "--detach", commit, cwd=path)
 
 def setup():
@@ -132,6 +136,9 @@ def verify():
 def restore():
     if not ARCHIVE.is_file():
         raise SystemExit(f"Missing iCloud archive: {ARCHIVE}")
+    receipt = json.loads((ARCHIVE.parent / "recovery-receipt.json").read_text())
+    if output("git", "rev-parse", "HEAD", cwd=ROOT) != receipt["commit"] or digest(ARCHIVE) != receipt["archive_sha256"]:
+        raise SystemExit("Git commit or encrypted archive differs from recovery receipt")
     password = getpass.getpass("Encrypted iCloud archive password: ")
     with tempfile.TemporaryDirectory(prefix="moss-mounted-") as mount:
         run("hdiutil", "attach", "-quiet", "-nobrowse", "-mountpoint", mount, "-stdinpass", str(ARCHIVE), input=password + "\n")
