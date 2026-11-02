@@ -51,6 +51,8 @@ The audit checks GitHub, the encrypted private archive, model downloads,
 installed environments, nested checkouts, and generated caches. It reports
 unknown files and adds them to the new encrypted backup. Cleanup aborts if
 their backup or restore check fails.
+During cleanup, missing public models are allowed when the manifest records a
+pinned, checksummed download. `make verify` still requires every model locally.
 
 Before the final confirmation, cleanup also creates a separate AES-256 iCloud
 disk image containing tracked edits, non-ignored untracked files, unknown

@@ -106,13 +106,16 @@ def status():
     marker = ROOT / "local/.restore-manifest.json"
     print("Private assets:", "restored" if marker.exists() else "not restored")
 
-def verify():
+def verify(require_downloaded_models=True):
     check_platform()
     errors = []
     for name, (path, _, commit) in NODES.items():
         if not (path / ".git").exists() or output("git", "rev-parse", "HEAD", cwd=path) != commit:
             errors.append(f"{name} revision")
     for entry in models():
+        if not require_downloaded_models and entry.get("source"):
+            # A pinned, checksummed public download is sufficient for cleanup.
+            continue
         target = ROOT / entry["path"]
         if not target.is_file() or digest(target) != entry["sha256"]:
             errors.append(entry["path"])
@@ -211,7 +214,7 @@ def clean():
     remote = output("git", "ls-remote", "origin", f"refs/heads/{saved['branch']}", cwd=ROOT)
     if not remote or remote.split()[0] != commit:
         raise SystemExit("Saved GitHub branch differs from checkout")
-    verify()
+    verify(require_downloaded_models=False)
     marker = json.loads((ROOT / "local/.restore-manifest.json").read_text())
     password = getpass.getpass("Existing encrypted recovery archive password: ")
     archive_files = check_private_archive(ARCHIVE, saved, marker, password)
@@ -241,7 +244,7 @@ def clean():
     before = snapshot(ROOT)
     if input("Type DELETE MOSS-IMAGE to remove these entries: ").strip() != "DELETE MOSS-IMAGE":
         raise SystemExit("Cleanup cancelled")
-    verify()
+    verify(require_downloaded_models=False)
     check_private_archive(ARCHIVE, saved, marker, password)
     remote = output("git", "ls-remote", "origin", f"refs/heads/{saved['branch']}", cwd=ROOT)
     if (snapshot(ROOT) != before or
