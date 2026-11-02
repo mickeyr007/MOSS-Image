@@ -183,23 +183,26 @@ def restore():
             run("hdiutil", "detach", "-quiet", mount)
 
 def clean():
-    approval = ROOT / "recovery/approved-cleanup.json"
-    entries = sorted(p.name for p in ROOT.iterdir() if p.name != "Makefile")
+    approval = ARCHIVE.parent / "cleanup-approval.json"
+    entries = [{"name": path.name, "size_kib": int(output("du", "-sk", str(path)).split()[0])}
+               for path in sorted(ROOT.iterdir()) if path.name != "Makefile"]
     print("Proposed deletion within", ROOT.resolve())
-    for name in entries:
-        print("  ", name)
+    for item in entries:
+        print(f"  {item['name']}: {item['size_kib']} KiB")
     if not approval.is_file():
         raise SystemExit("Cleanup locked: explicit approval of this manifest has not been recorded.")
     approved = json.loads(approval.read_text())
-    if approved.get("directory") != str(ROOT.resolve()) or approved.get("entries") != entries:
-        raise SystemExit("Cleanup manifest changed; refusing deletion")
+    commit = output("git", "rev-parse", "HEAD", cwd=ROOT)
+    if approved.get("directory") != str(ROOT.resolve()) or approved.get("delete") != entries or approved.get("remote_commit") != commit:
+        raise SystemExit("Cleanup manifest or commit changed; refusing deletion")
     receipt = ARCHIVE.parent / "recovery-receipt.json"
     if not receipt.is_file() or digest(ARCHIVE) != json.loads(receipt.read_text())["archive_sha256"]:
         raise SystemExit("Private archive verification failed; refusing deletion")
+    verify()
     if input("Type DELETE MOSS-IMAGE to remove these entries: ").strip() != "DELETE MOSS-IMAGE":
         raise SystemExit("Cleanup cancelled")
-    for name in entries:
-        path = ROOT / name
+    for item in entries:
+        path = ROOT / item["name"]
         if path.is_symlink() or path.is_file():
             path.unlink()
         elif path.is_dir():
