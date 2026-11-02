@@ -48,6 +48,7 @@ class CleanupAuditTests(unittest.TestCase):
         ignored.parent.mkdir()
         ignored.write_bytes(b"irreplaceable")
         self.assertIn("ignored/asset.png", cleanup.audit(self.root, {}, [], {}, set()))
+        self.assertEqual(cleanup.audit(self.root, {}, [], {}, {"ignored/asset.png"}), [])
 
     def test_modified_and_untracked_need_encrypted_backup(self):
         (self.root / "source.txt").write_text("changed\n")

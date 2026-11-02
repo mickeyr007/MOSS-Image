@@ -131,6 +131,8 @@ def audit(root, nodes, model_entries, archive_files, backup_files):
             continue
         repo, tracked, changed, untracked = owner
         sub = path.relative_to(repo).as_posix()
+        if rel in backup_files:
+            continue
         if sub == ".git" or sub.startswith(".git/"):
             # Every Git administrative file is copied into the encrypted image.
             continue
@@ -194,7 +196,7 @@ def check_private_archive(archive, receipt, marker, password):
             command("hdiutil", "detach", "-quiet", str(mount))
 
 
-def save_changes(root, repos, cloud):
+def save_changes(root, repos, cloud, extra=()):
     """Create a separate encrypted image; no plaintext staging files."""
     selections = []
     for repo, commit in repos:
@@ -204,6 +206,7 @@ def save_changes(root, repos, cloud):
     if len(password) < 12 or password != getpass.getpass("Repeat password: "):
         raise SystemExit("New archive password mismatch or shorter than 12 characters")
     size = sum((repo / name).lstat().st_size for repo, _, _, names in selections for name in names)
+    size += sum((root / rel).lstat().st_size for rel in extra)
     size += sum(sum(p.lstat().st_size for p in inventory(repo / ".git").values())
                 for repo, _ in repos)
     image = cloud / f"moss-local-changes-{os.getpid()}.sparseimage"
@@ -242,7 +245,21 @@ def save_changes(root, repos, cloud):
                     manifest.append({"index": idx, "repo": repo.relative_to(root).as_posix(),
                                      "commit": commit, "modified": sorted(modified),
                                      "untracked": sorted(untracked)})
+                for rel in sorted(extra):
+                    src = root / rel
+                    if (Path(rel).is_absolute() or ".." in Path(rel).parts or
+                            not src.parent.resolve().is_relative_to(root.resolve()) or
+                            not (src.is_file() or src.is_symlink())):
+                        raise SystemExit(f"Cannot preserve unclassified entry: {rel}")
+                    target = mount / "additional" / rel
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    if src.is_symlink():
+                        target.symlink_to(os.readlink(src))
+                    else:
+                        shutil.copy2(src, target)
+                    files.add(rel)
                 (mount / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+                (mount / "additional.json").write_text(json.dumps(sorted(extra)) + "\n")
             finally:
                 command("hdiutil", "detach", "-quiet", str(mount))
         # Read it back after remount; test each patch against a clean Git index.
@@ -252,6 +269,15 @@ def save_changes(root, repos, cloud):
             try:
                 if json.loads((mount / "manifest.json").read_text()) != manifest:
                     raise SystemExit("Local changes manifest did not round trip")
+                if json.loads((mount / "additional.json").read_text()) != sorted(extra):
+                    raise SystemExit("Additional backup manifest did not round trip")
+                for rel in extra:
+                    src, dst = root / rel, mount / "additional" / rel
+                    if src.is_symlink():
+                        if not dst.is_symlink() or os.readlink(src) != os.readlink(dst):
+                            raise SystemExit(f"Additional symlink backup mismatch: {src}")
+                    elif not dst.is_file() or sha(src) != sha(dst):
+                        raise SystemExit(f"Additional backup mismatch: {src}")
                 for item in manifest:
                     repo = root / item["repo"]
                     dest = mount / f"repo-{item['index']}"

@@ -229,11 +229,14 @@ def clean():
         proposed.update((repo / name).relative_to(ROOT).as_posix() for name in modified | untracked)
     unknown = audit(ROOT, NODES, model_entries, archive_files, proposed)
     if unknown:
-        raise SystemExit("Unclassified files; cleanup aborted:\n  " + "\n  ".join(unknown[:100]) +
-                         (f"\n  ... and {len(unknown)-100} more" if len(unknown) > 100 else ""))
-    protected, image = save_changes(ROOT, repos, ARCHIVE.parent)
-    if protected != proposed:
+        print("Additional files requiring encrypted preservation:")
+        for rel in unknown:
+            print("  ", rel)
+    protected, image = save_changes(ROOT, repos, ARCHIVE.parent, extra=unknown)
+    if protected != proposed | set(unknown):
         raise SystemExit("Local changes changed during backup; cleanup aborted")
+    if audit(ROOT, NODES, model_entries, archive_files, protected):
+        raise SystemExit("Unclassified files remain after encrypted backup; cleanup aborted")
     image_digest = sha(image) if image else None
     before = snapshot(ROOT)
     if input("Type DELETE MOSS-IMAGE to remove these entries: ").strip() != "DELETE MOSS-IMAGE":

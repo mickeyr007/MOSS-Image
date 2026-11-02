@@ -49,14 +49,17 @@ every file below those names. Size changes and missing approved entries are
 allowed; new entries and files without a verified recovery source stop cleanup.
 The audit checks GitHub, the encrypted private archive, model downloads,
 installed environments, nested checkouts, and generated caches. It reports
-unknown files so they can be reviewed and backed up before retrying.
+unknown files and adds them to the new encrypted backup. Cleanup aborts if
+their backup or restore check fails.
 
 Before the final confirmation, cleanup also creates a separate AES-256 iCloud
-disk image containing tracked edits, non-ignored untracked files, and Git
+disk image containing tracked edits, non-ignored untracked files, unknown
+ignored files, and Git
 administrative data. It verifies the image by remounting it and checking the
 patch and files. Keep the new image password separately. To recover local edits
 after `make setup`, mount the printed local-changes image, copy its untracked
-files to the paths in `manifest.json`, and apply each `tracked.patch` from its
+files to the paths in `manifest.json`, restore files listed in `additional.json`
+from the `additional/` directory, and apply each `tracked.patch` from its
 recorded repository root with `git apply`. The existing private archive remains
 unchanged. Cleanup requires typing `DELETE MOSS-IMAGE` and rechecks the
 inventory and backups immediately before deleting anything.
