@@ -103,6 +103,8 @@ def status():
     for item in missing:
         print("  missing:", item)
     print("Private archive:", ARCHIVE if ARCHIVE.exists() else "missing")
+    marker = ROOT / "local/.restore-manifest.json"
+    print("Private assets:", "restored" if marker.exists() else "not restored")
 
 def verify():
     check_platform()
@@ -126,6 +128,18 @@ def verify():
                     errors.append(f"{name} package versions: {sorted(expected - installed)}")
     else:
         errors.append("uv unavailable for package verification")
+    marker = ROOT / "local/.restore-manifest.json"
+    if marker.exists():
+        private = json.loads(marker.read_text())
+        for item in private["files"]:
+            path = ROOT / item["path"]
+            if not path.is_file() or digest(path) != item["sha256"]:
+                errors.append(item["path"])
+        receipt = json.loads((ARCHIVE.parent / "recovery-receipt.json").read_text())
+        if private["archive_sha256"] != receipt["archive_sha256"] or private["commit"] != output("git", "rev-parse", "HEAD", cwd=ROOT):
+            errors.append("private recovery receipt")
+    else:
+        errors.append("private assets not restored")
     for base in (ROOT / "comfyui/moss-image/example_workflows", COMFY / "user/default/workflows"):
         for path in base.glob("*.json"):
             json.loads(path.read_text())
@@ -163,6 +177,7 @@ def restore():
             for src, dst in planned:
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, dst)
+            (ROOT / "local/.restore-manifest.json").write_text(json.dumps({"files": inventory["files"], "archive_sha256": receipt["archive_sha256"], "commit": receipt["commit"]}, indent=2) + "\n")
             print(f"Restored {len(inventory['files'])} private files")
         finally:
             run("hdiutil", "detach", "-quiet", mount)
