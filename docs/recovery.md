@@ -43,3 +43,20 @@ gradio-start` launches the original Gradio UI; `make start` launches ComfyUI.
 and explicit approval are required before the local installation can be
 reduced to `Makefile`. Never remove shared model stores, shared caches, or
 files outside the MOSS-Image directory.
+
+Cleanup compares approved top-level names and the saved commit, then audits
+every file below those names. Size changes and missing approved entries are
+allowed; new entries and files without a verified recovery source stop cleanup.
+The audit checks GitHub, the encrypted private archive, model downloads,
+installed environments, nested checkouts, and generated caches. It reports
+unknown files so they can be reviewed and backed up before retrying.
+
+Before the final confirmation, cleanup also creates a separate AES-256 iCloud
+disk image containing tracked edits, non-ignored untracked files, and Git
+administrative data. It verifies the image by remounting it and checking the
+patch and files. Keep the new image password separately. To recover local edits
+after `make setup`, mount the printed local-changes image, copy its untracked
+files to the paths in `manifest.json`, and apply each `tracked.patch` from its
+recorded repository root with `git apply`. The existing private archive remains
+unchanged. Cleanup requires typing `DELETE MOSS-IMAGE` and rechecks the
+inventory and backups immediately before deleting anything.

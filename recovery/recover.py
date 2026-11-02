@@ -155,7 +155,13 @@ def restore():
         raise SystemExit("Git commit or encrypted archive differs from recovery receipt")
     password = getpass.getpass("Encrypted iCloud archive password: ")
     with tempfile.TemporaryDirectory(prefix="moss-mounted-") as mount:
-        run("hdiutil", "attach", "-quiet", "-nobrowse", "-mountpoint", mount, "-stdinpass", str(ARCHIVE), input=password + "\n")
+        attached = subprocess.run(
+            ("hdiutil", "attach", "-nobrowse", "-mountpoint", mount, "-stdinpass", str(ARCHIVE)),
+            input=password + "\n", text=True, capture_output=True,
+        )
+        if attached.returncode:
+            detail = attached.stderr.strip() or f"hdiutil exited with status {attached.returncode}"
+            raise SystemExit(f"Could not mount encrypted archive: {detail}")
         try:
             source = Path(mount)
             inventory = json.loads((source / "private-manifest.json").read_text())
@@ -183,24 +189,65 @@ def restore():
             run("hdiutil", "detach", "-quiet", mount)
 
 def clean():
+    from cleanup import (approved_entries, audit, check_private_archive, git,
+                         repositories, save_changes, sha, snapshot)
+
     approval = ARCHIVE.parent / "cleanup-approval.json"
-    entries = [{"name": path.name, "size_kib": int(output("du", "-sk", str(path)).split()[0])}
-               for path in sorted(ROOT.iterdir()) if path.name != "Makefile"]
+    if not approval.is_file():
+        raise SystemExit("Cleanup locked: explicit approval has not been recorded")
+    commit = output("git", "rev-parse", "HEAD", cwd=ROOT)
+    current = approved_entries(ROOT, approval, commit)
+    entries = [{"name": name, "size_kib": int(output("du", "-sk", str(path)).split()[0])}
+               for name, path in sorted(current.items())]
     print("Proposed deletion within", ROOT.resolve())
     for item in entries:
         print(f"  {item['name']}: {item['size_kib']} KiB")
-    if not approval.is_file():
-        raise SystemExit("Cleanup locked: explicit approval of this manifest has not been recorded.")
-    approved = json.loads(approval.read_text())
-    commit = output("git", "rev-parse", "HEAD", cwd=ROOT)
-    if approved.get("directory") != str(ROOT.resolve()) or approved.get("delete") != entries or approved.get("remote_commit") != commit:
-        raise SystemExit("Cleanup manifest or commit changed; refusing deletion")
     receipt = ARCHIVE.parent / "recovery-receipt.json"
-    if not receipt.is_file() or digest(ARCHIVE) != json.loads(receipt.read_text())["archive_sha256"]:
-        raise SystemExit("Private archive verification failed; refusing deletion")
+    if not receipt.is_file():
+        raise SystemExit("Missing recovery receipt")
+    saved = json.loads(receipt.read_text())
+    if saved.get("commit") != commit:
+        raise SystemExit("Recovery receipt commit differs from checkout")
+    remote = output("git", "ls-remote", "origin", f"refs/heads/{saved['branch']}", cwd=ROOT)
+    if not remote or remote.split()[0] != commit:
+        raise SystemExit("Saved GitHub branch differs from checkout")
     verify()
+    marker = json.loads((ROOT / "local/.restore-manifest.json").read_text())
+    password = getpass.getpass("Existing encrypted recovery archive password: ")
+    archive_files = check_private_archive(ARCHIVE, saved, marker, password)
+    repos = repositories(ROOT, NODES)
+    for path, _, pinned in NODES.values():
+        bundle = ROOT / "private/git-bundles" / (path.name + ".bundle")
+        heads = output("git", "bundle", "list-heads", str(bundle), cwd=ROOT)
+        if pinned not in {line.split()[0] for line in heads.splitlines()}:
+            raise SystemExit(f"Nested checkout recovery bundle lacks pinned commit: {path}")
+    model_entries = models()
+    proposed = set()
+    for repo, _ in repos:
+        from cleanup import changes
+        modified, untracked = changes(repo)
+        proposed.update((repo / name).relative_to(ROOT).as_posix() for name in modified | untracked)
+    unknown = audit(ROOT, NODES, model_entries, archive_files, proposed)
+    if unknown:
+        raise SystemExit("Unclassified files; cleanup aborted:\n  " + "\n  ".join(unknown[:100]) +
+                         (f"\n  ... and {len(unknown)-100} more" if len(unknown) > 100 else ""))
+    protected, image = save_changes(ROOT, repos, ARCHIVE.parent)
+    if protected != proposed:
+        raise SystemExit("Local changes changed during backup; cleanup aborted")
+    image_digest = sha(image) if image else None
+    before = snapshot(ROOT)
     if input("Type DELETE MOSS-IMAGE to remove these entries: ").strip() != "DELETE MOSS-IMAGE":
         raise SystemExit("Cleanup cancelled")
+    verify()
+    check_private_archive(ARCHIVE, saved, marker, password)
+    remote = output("git", "ls-remote", "origin", f"refs/heads/{saved['branch']}", cwd=ROOT)
+    if (snapshot(ROOT) != before or
+            set(approved_entries(ROOT, approval, commit)) != set(current) or
+            output("git", "rev-parse", "HEAD", cwd=ROOT) != commit or
+            not remote or remote.split()[0] != commit or
+            (image and sha(image) != image_digest) or
+            audit(ROOT, NODES, model_entries, archive_files, protected)):
+        raise SystemExit("Inventory, approval, or encrypted backup changed; cleanup aborted")
     for item in entries:
         path = ROOT / item["name"]
         if path.is_symlink() or path.is_file():
